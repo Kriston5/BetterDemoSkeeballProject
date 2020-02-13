@@ -17,15 +17,15 @@
 	"BuildProducts" :
 	[
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-DemoSkeeBallProject-927.dll",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-DemoSkeeBallProject-3292.dll",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-DemoSkeeBallProject-927.pdb",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-DemoSkeeBallProject-3292.pdb",
 			"Type" : "SymbolFile"
 		},
 		{
-			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-DemoSkeeBallProject-927.lib",
+			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-DemoSkeeBallProject-3292.lib",
 			"Type" : "ImportLibrary"
 		},
 		{
