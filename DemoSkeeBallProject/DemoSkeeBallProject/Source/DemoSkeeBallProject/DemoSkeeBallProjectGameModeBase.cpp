@@ -2,17 +2,17 @@
 
 #include "DemoSkeeBallProjectGameModeBase.h"
 
-ADemoSkeeBallProjectGameModeBase::BeginPlay() 
+void ADemoSkeeBallProjectGameModeBase::BeginPlay() 
 {
 	SetScore(0);
 }
 
-ADemoSkeeBallProjectGameModeBase::GetScore()
+int ADemoSkeeBallProjectGameModeBase::GetScore()
 {
 	return m_iScore;
 }
 
-ADemoSkeeBallProjectGameModeBase::SetScore(int newScore)
+void ADemoSkeeBallProjectGameModeBase::SetScore(int newScore)
 {
 	m_iScore = newScore;
 }
