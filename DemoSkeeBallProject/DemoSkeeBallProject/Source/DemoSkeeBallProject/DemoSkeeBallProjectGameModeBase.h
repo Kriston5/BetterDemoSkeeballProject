@@ -19,7 +19,8 @@ private:
 
 public:
 	void BeginPlay() override;
-	int GetScore();
+	UFUNCTION(BlueprintCallable)
+		int GetScore();
 	void SetScore(int newScore);
 	
 };
