@@ -13,8 +13,8 @@ UCLASS()
 class DEMOSKEEBALLPROJECT_API ACoolButton : public AWorldButton
 {
 	GENERATED_BODY()
-
-		void OnPressed_Implementation(ABaseController* pController) override;
+	ACoolButton();
+	virtual void OnPressed_Implementation(ABaseController* pController) override;
 	
 	
 };

@@ -2,6 +2,13 @@
 
 #include "CoolButton.h"
 
+ACoolButton::ACoolButton()
+{
+	UStaticMesh* mesh = FindMesh()
+}
+void ACoolButton::OnPressed_Implementation(ABaseController* pController) {
+
+}
 
 
 
