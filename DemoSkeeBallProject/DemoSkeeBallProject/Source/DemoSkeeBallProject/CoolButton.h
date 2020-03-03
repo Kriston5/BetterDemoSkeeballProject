@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "VRBase/AWorldButton/AWorldButton.h"
+#include "Components/StaticMeshComponent.h"
 #include "CoolButton.generated.h"
 
 /**
@@ -16,5 +17,7 @@ class DEMOSKEEBALLPROJECT_API ACoolButton : public AWorldButton
 	ACoolButton();
 	virtual void OnPressed_Implementation(ABaseController* pController) override;
 	
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* m_pSpawnLocationMesh;
 	
 };
