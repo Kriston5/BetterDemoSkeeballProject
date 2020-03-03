@@ -5,11 +5,11 @@
 ACoolButton::ACoolButton()
 {
 	UStaticMesh* mesh = FindMesh("StaticMesh'/Game/DemoSkeeBallProject/Long_Button_Keith.Long_Button_Keith'");
-	UStaticMesh* spawnMesh = FindMesh("StaticMesh'/Game/Meshes/sphereMesh.sphereMesh'")
+	UStaticMesh* spawnMesh = FindMesh("StaticMesh'/Game/Meshes/sphereMesh.sphereMesh'");
 	m_pMeshComponent->SetStaticMesh(mesh);
 
 	m_pSpawnLocationMesh = CreateDefaultSubobject<UStaticMeshComponent>("BallSpawn");
-	m_pSpawnLocationMexh->SetStaticMesh(spawnMesh);
+	m_pSpawnLocationMesh->SetStaticMesh(spawnMesh);
 }
 void ACoolButton::OnPressed_Implementation(ABaseController* pController) {
 
