@@ -15,7 +15,7 @@ ASkeeBallMachine::ASkeeBallMachine()
 	FVector scale = FVector(scaleFactor);			//Make a vector called scale that represents how much something should be scaled in each direction (scaleFactor)
 	m_pStaticMeshComponent->SetWorldScale3D(scale);	//Set the scale of the static mesh component to the scale vector
 
-
+	m_bPlayerHasWon = false;
 }
 
 
@@ -27,5 +27,11 @@ void ASkeeBallMachine::AddToScore(int points) {
 		int currScore = mode->GetScore();
 		// add to score
 		mode->SetScore(currScore + points);
+		m_bPlayerHasWon = (mode->GetScore() >= mode->GetWinScore());
 	}
+}
+
+void ASkeeBallMachine::DefaultThink()
+{
+	if (m_bPlayerHasWon) Msg("You won!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 }

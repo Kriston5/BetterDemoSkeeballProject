@@ -2,6 +2,12 @@
 
 #include "DemoSkeeBallProjectGameModeBase.h"
 
+
+ADemoSkeeBallProjectGameModeBase::ADemoSkeeBallProjectGameModeBase()
+{
+	m_iWinScore = 100;
+}
+
 void ADemoSkeeBallProjectGameModeBase::BeginPlay() 
 {
 	SetScore(0);
@@ -15,4 +21,9 @@ int ADemoSkeeBallProjectGameModeBase::GetScore()
 void ADemoSkeeBallProjectGameModeBase::SetScore(int newScore)
 {
 	m_iScore = newScore;
+}
+
+int ADemoSkeeBallProjectGameModeBase::GetWinScore()
+{
+	return m_iWinScore;
 }
