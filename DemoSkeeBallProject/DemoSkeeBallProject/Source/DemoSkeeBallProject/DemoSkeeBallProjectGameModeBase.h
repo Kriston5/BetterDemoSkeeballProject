@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "SkeeBall.h"
 #include "DemoSkeeBallProjectGameModeBase.generated.h"
 
 /**
@@ -25,4 +26,12 @@ public:
 		int GetScore();
 	void SetScore(int newScore);
 	int GetWinScore();
+	void AddBall(ASkeeBall* skeeball);
+	UFUNCTION(BlueprintCallable)
+	void RemoveBall(ASkeeBall* skeeball);
+
+	ASkeeBall* m_pActiveSkeeBalls[10];
+	int m_iNumberOfSkeeBalls;
+
+
 };

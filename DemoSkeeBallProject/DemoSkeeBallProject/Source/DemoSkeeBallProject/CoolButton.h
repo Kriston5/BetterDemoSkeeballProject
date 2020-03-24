@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "VRBase/AWorldButton/AWorldButton.h"
 #include "Components/StaticMeshComponent.h"
+#include "DemoSkeeBallProjectGameModeBase.h"
 #include "CoolButton.generated.h"
 
 /**

@@ -18,6 +18,9 @@ void ACoolButton::OnPressed_Implementation(ABaseController* pController)
 	
 	ASkeeBall* skeeBall = (ASkeeBall*)								//Cast the next line as a pointer to ASkeeBall and set it equal to skeeball (can be made into one line) 
 	GetWorld()->SpawnActor(ASkeeBall::StaticClass(), &loc);			//Spawn an actor of SkeeBall class in the current world at the location vector
+
+	ADemoSkeeBallProjectGameModeBase* gameMode = Cast<ADemoSkeeBallProjectGameModeBase>(GetWorld()->GetAuthGameMode());	//Get the current game mode
+	gameMode->AddBall(skeeBall);	//Add the skeeball to the active skeeball array
 }
 
 
