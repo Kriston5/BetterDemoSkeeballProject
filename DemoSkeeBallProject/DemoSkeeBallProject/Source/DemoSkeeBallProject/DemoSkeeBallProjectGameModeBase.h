@@ -30,7 +30,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void RemoveBall(ASkeeBall* skeeball);
 
-	ASkeeBall* m_pActiveSkeeBalls[10];
+	ASkeeBall* m_pActiveSkeeBalls[12];
 	int m_iNumberOfSkeeBalls;
 
 

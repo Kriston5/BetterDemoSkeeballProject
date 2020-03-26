@@ -35,7 +35,7 @@ int ADemoSkeeBallProjectGameModeBase::GetWinScore()
 
 void ADemoSkeeBallProjectGameModeBase::AddBall(ASkeeBall* skeeball)
 {
-	if (m_iNumberOfSkeeBalls == 10) RemoveBall(m_pActiveSkeeBalls[0]);	//If there are ten skeeballs in memory, delete the oldest one
+	if (m_iNumberOfSkeeBalls >= 10) RemoveBall(m_pActiveSkeeBalls[0]);	//If there are ten skeeballs in memory, delete the oldest one
 	m_pActiveSkeeBalls[++m_iNumberOfSkeeBalls] = skeeball;				//Increment the number of skeeballs and set the first open element to the new skeeball
 }
 
@@ -51,7 +51,7 @@ void ADemoSkeeBallProjectGameModeBase::RemoveBall(ASkeeBall* skeeball)
 	{
 		m_pActiveSkeeBalls[i] = m_pActiveSkeeBalls[i + 1];	//Set each array element to the next element's value
 	}
-	m_pActiveSkeeBalls[m_iNumberOfSkeeBalls--] = NULL;	//Set the last active skeeball to NULL so no two elements are aliased
+	m_pActiveSkeeBalls[--m_iNumberOfSkeeBalls] = NULL;	//Set the last active skeeball to NULL so no two elements are aliased
 	
 	skeeball->DestroyEntity();	//Delete the skeeball from memory
 }
