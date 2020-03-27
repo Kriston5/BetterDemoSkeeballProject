@@ -36,11 +36,12 @@ int ADemoSkeeBallProjectGameModeBase::GetWinScore()
 void ADemoSkeeBallProjectGameModeBase::AddBall(ASkeeBall* skeeball)
 {
 	if (m_iNumberOfSkeeBalls >= 10) RemoveBall(m_pActiveSkeeBalls[0]);	//If there are ten skeeballs in memory, delete the oldest one
-	m_pActiveSkeeBalls[++m_iNumberOfSkeeBalls] = skeeball;				//Increment the number of skeeballs and set the first open element to the new skeeball
+	m_pActiveSkeeBalls[m_iNumberOfSkeeBalls++] = skeeball;				//Increment the number of skeeballs and set the first open element to the new skeeball
 }
 
 void ADemoSkeeBallProjectGameModeBase::RemoveBall(ASkeeBall* skeeball)
 {
+	if (!skeeball) NLogger::Warning("Pointer to SkeeBall is NULL");
 	int index = 0;
 
 	for (int i = 0; i < m_iNumberOfSkeeBalls; i++)
@@ -51,7 +52,11 @@ void ADemoSkeeBallProjectGameModeBase::RemoveBall(ASkeeBall* skeeball)
 	{
 		m_pActiveSkeeBalls[i] = m_pActiveSkeeBalls[i + 1];	//Set each array element to the next element's value
 	}
-	m_pActiveSkeeBalls[--m_iNumberOfSkeeBalls] = NULL;	//Set the last active skeeball to NULL so no two elements are aliased
+
+	m_iNumberOfSkeeBalls--;
+
+	m_pActiveSkeeBalls[m_iNumberOfSkeeBalls] = NULL;	//Set the last active skeeball to NULL so no two elements are aliased
 	
-	skeeball->DestroyEntity();	//Delete the skeeball from memory
+	if(skeeball) skeeball->DestroyEntity();	//Delete the skeeball from memory
+	else NLogger::Warning("Pointer is NULL (after method)");
 }
