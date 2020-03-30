@@ -6,11 +6,7 @@
 ADemoSkeeBallProjectGameModeBase::ADemoSkeeBallProjectGameModeBase()
 {
 	m_iWinScore = 100;
-	m_iNumberOfSkeeBalls = 0;
-	for (int i = 0; i < 10; i++)
-	{
-		m_pActiveSkeeBalls[i] = NULL;
-	}
+	m_iNextSkeeBall = 0;
 }
 
 void ADemoSkeeBallProjectGameModeBase::BeginPlay() 
@@ -33,30 +29,19 @@ int ADemoSkeeBallProjectGameModeBase::GetWinScore()
 	return m_iWinScore;
 }
 
+void ADemoSkeeBallProjectGameModeBase::SpawnBall(FVector location)
+{
+	ASkeeBall* nextBall = m_pActiveSkeeBalls[m_iNextSkeeBall++];
+	m_iNextSkeeBall %= MaxBalls;
+	nextBall->SetActorLocation(location);
+	nextBall->ResetPhysics();
+}
+
 void ADemoSkeeBallProjectGameModeBase::AddBall(ASkeeBall* skeeball)
 {
-	if (m_iNumberOfSkeeBalls >= 10) RemoveBall(m_pActiveSkeeBalls[0]);	//If there are ten skeeballs in memory, delete the oldest one
-	m_pActiveSkeeBalls[m_iNumberOfSkeeBalls++] = skeeball;				//Increment the number of skeeballs and set the first open element to the new skeeball
+	m_pActiveSkeeBalls[m_iNextSkeeBall] = skeeball;
+	m_iNextSkeeBall++;
+	m_iNextSkeeBall %= MaxBalls;
 }
 
-void ADemoSkeeBallProjectGameModeBase::RemoveBall(ASkeeBall* skeeball)
-{
-	if (!skeeball) NLogger::Warning("Pointer to SkeeBall is NULL");
-	int index = 0;
-
-	for (int i = 0; i < m_iNumberOfSkeeBalls; i++)
-	{
-		if (skeeball == m_pActiveSkeeBalls[i]) index = i;	//Find the index of the skeeball to remove
-	}
-	for (int i = index; i < m_iNumberOfSkeeBalls - 1; i++)
-	{
-		m_pActiveSkeeBalls[i] = m_pActiveSkeeBalls[i + 1];	//Set each array element to the next element's value
-	}
-
-	m_iNumberOfSkeeBalls--;
-
-	m_pActiveSkeeBalls[m_iNumberOfSkeeBalls] = NULL;	//Set the last active skeeball to NULL so no two elements are aliased
-	
-	if(skeeball) skeeball->DestroyEntity();	//Delete the skeeball from memory
-	else NLogger::Warning("Pointer is NULL (after method)");
-}
+void ADemoSkeeBallProjectGameModeBase::RemoveBall(ASkeeBall* skeeball) {}

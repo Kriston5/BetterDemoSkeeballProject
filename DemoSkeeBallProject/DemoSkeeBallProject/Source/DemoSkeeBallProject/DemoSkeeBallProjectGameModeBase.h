@@ -7,6 +7,8 @@
 #include "SkeeBall.h"
 #include "DemoSkeeBallProjectGameModeBase.generated.h"
 
+#define MaxBalls 20
+
 /**
  * 
  */
@@ -22,16 +24,19 @@ private:
 public:
 	ADemoSkeeBallProjectGameModeBase();
 	void BeginPlay() override;
+	
 	UFUNCTION(BlueprintCallable)
-		int GetScore();
+	int GetScore();
+	
 	void SetScore(int newScore);
 	int GetWinScore();
+
+	ASkeeBall* m_pActiveSkeeBalls[MaxBalls];
+	int m_iNextSkeeBall;
+
+	void SpawnBall(FVector location);
 	void AddBall(ASkeeBall* skeeball);
+
 	UFUNCTION(BlueprintCallable)
 	void RemoveBall(ASkeeBall* skeeball);
-
-	ASkeeBall* m_pActiveSkeeBalls[13];
-	int m_iNumberOfSkeeBalls;
-
-
 };

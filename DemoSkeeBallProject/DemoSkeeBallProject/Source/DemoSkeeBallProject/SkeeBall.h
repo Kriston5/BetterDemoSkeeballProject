@@ -16,6 +16,12 @@ class DEMOSKEEBALLPROJECT_API ASkeeBall : public APickup
 	GENERATED_BODY()
 
 	ASkeeBall();
-	
-	
+
+
+	FVector m_pStartPosition;
+
+public:
+	void ResetPhysics();
+	void ResetPosition();
+
 };

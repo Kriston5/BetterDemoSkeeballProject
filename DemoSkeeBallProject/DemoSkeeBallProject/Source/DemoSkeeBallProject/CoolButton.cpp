@@ -11,16 +11,15 @@ ACoolButton::ACoolButton()
 
 	m_pSpawnLocationMesh = CreateDefaultSubobject<UStaticMeshComponent>("BallSpawn");
 	m_pSpawnLocationMesh->SetStaticMesh(spawnMesh);
+
+	m_pGameMode = Cast<ADemoSkeeBallProjectGameModeBase>(GetWorld()->GetAuthGameMode());
+
+	m_pSpawnLocation = m_pSpawnLocationMesh->GetComponentLocation();
 }
+
 void ACoolButton::OnPressed_Implementation(ABaseController* pController)
 {
-	FVector loc = m_pSpawnLocationMesh->GetComponentLocation();		//Set a vector representing the location to the location of the spawn ball mesh
-	
-	ASkeeBall* skeeBall = (ASkeeBall*)								//Cast the next line as a pointer to ASkeeBall and set it equal to skeeball (can be made into one line) 
-	GetWorld()->SpawnActor(ASkeeBall::StaticClass(), &loc);			//Spawn an actor of SkeeBall class in the current world at the location vector
-
-	ADemoSkeeBallProjectGameModeBase* gameMode = Cast<ADemoSkeeBallProjectGameModeBase>(GetWorld()->GetAuthGameMode());	//Get the current game mode
-	gameMode->AddBall(skeeBall);							//Add the skeeball to the active skeeball array
+	m_pGameMode->SpawnBall(m_pSpawnLocation);
 }
 
 

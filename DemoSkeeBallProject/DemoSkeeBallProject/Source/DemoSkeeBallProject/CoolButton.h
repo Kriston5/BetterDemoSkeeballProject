@@ -21,4 +21,6 @@ class DEMOSKEEBALLPROJECT_API ACoolButton : public AWorldButton
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* m_pSpawnLocationMesh;
 	
+	ADemoSkeeBallProjectGameModeBase* m_pGameMode;
+	FVector m_pSpawnLocation;
 };
