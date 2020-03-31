@@ -12,13 +12,20 @@ ACoolButton::ACoolButton()
 	m_pSpawnLocationMesh = CreateDefaultSubobject<UStaticMeshComponent>("BallSpawn");
 	m_pSpawnLocationMesh->SetStaticMesh(spawnMesh);
 
-	m_pGameMode = Cast<ADemoSkeeBallProjectGameModeBase>(GetWorld()->GetAuthGameMode());
-
 	m_pSpawnLocation = m_pSpawnLocationMesh->GetComponentLocation();
 }
 
 void ACoolButton::OnPressed_Implementation(ABaseController* pController)
 {
+	NLogger::Warning("Button Pressed!");
+	if (!m_pGameMode)
+	{
+		NLogger::Warning("m_pGameMode is NULL, initializing its value");
+		m_pGameMode = (GetWorld()->GetAuthGameMode<ADemoSkeeBallProjectGameModeBase>());
+		NLogger::Warning("Success!");
+	}
+
+	NLogger::Warning("Calling SpawnBall");
 	m_pGameMode->SpawnBall(m_pSpawnLocation);
 }
 

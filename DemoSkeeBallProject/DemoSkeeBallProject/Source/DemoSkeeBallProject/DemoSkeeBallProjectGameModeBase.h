@@ -36,7 +36,4 @@ public:
 
 	void SpawnBall(FVector location);
 	void AddBall(ASkeeBall* skeeball);
-
-	UFUNCTION(BlueprintCallable)
-	void RemoveBall(ASkeeBall* skeeball);
 };

@@ -9,8 +9,11 @@ ASkeeBall::ASkeeBall()
 	UStaticMesh* mesh = FindMesh("StaticMesh'/Game/Meshes/sphereMesh.sphereMesh'");
 	m_pPickupMeshComponent->SetStaticMesh(mesh);
 	m_pStartPosition = this->GetActorLocation();
+}
 
-	Cast<ADemoSkeeBallProjectGameModeBase>(GetWorld()->GetAuthGameMode())->AddBall(this);
+void ASkeeBall::PostInit()
+{
+	(GetWorld()->GetAuthGameMode<ADemoSkeeBallProjectGameModeBase>())->AddBall(this);
 }
 
 void ASkeeBall::ResetPhysics()

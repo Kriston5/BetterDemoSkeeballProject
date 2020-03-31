@@ -17,6 +17,8 @@ class DEMOSKEEBALLPROJECT_API ASkeeBall : public APickup
 
 	ASkeeBall();
 
+	void PostInit() override;
+
 
 	FVector m_pStartPosition;
 

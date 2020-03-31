@@ -31,10 +31,15 @@ int ADemoSkeeBallProjectGameModeBase::GetWinScore()
 
 void ADemoSkeeBallProjectGameModeBase::SpawnBall(FVector location)
 {
-	ASkeeBall* nextBall = m_pActiveSkeeBalls[m_iNextSkeeBall++];
+	NLogger::Warning("Spawning new ball");
+	ASkeeBall* nextBall = m_pActiveSkeeBalls[m_iNextSkeeBall];
+	m_iNextSkeeBall++;
 	m_iNextSkeeBall %= MaxBalls;
-	nextBall->SetActorLocation(location);
-	nextBall->ResetPhysics();
+	if (nextBall)
+	{
+		nextBall->SetActorLocation(location);
+		nextBall->ResetPhysics();
+	}
 }
 
 void ADemoSkeeBallProjectGameModeBase::AddBall(ASkeeBall* skeeball)
@@ -43,5 +48,3 @@ void ADemoSkeeBallProjectGameModeBase::AddBall(ASkeeBall* skeeball)
 	m_iNextSkeeBall++;
 	m_iNextSkeeBall %= MaxBalls;
 }
-
-void ADemoSkeeBallProjectGameModeBase::RemoveBall(ASkeeBall* skeeball) {}
