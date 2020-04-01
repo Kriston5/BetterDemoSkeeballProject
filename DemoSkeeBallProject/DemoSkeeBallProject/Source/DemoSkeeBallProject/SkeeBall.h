@@ -19,11 +19,11 @@ class DEMOSKEEBALLPROJECT_API ASkeeBall : public APickup
 
 	void PostInit() override;
 
-
 	FVector m_pStartPosition;
 
 public:
 	void ResetPhysics();
+	UFUNCTION(blueprintCallable)
 	void ResetPosition();
 
 };

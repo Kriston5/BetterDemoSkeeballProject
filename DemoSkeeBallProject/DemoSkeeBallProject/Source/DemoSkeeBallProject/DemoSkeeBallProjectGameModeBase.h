@@ -31,7 +31,7 @@ public:
 	void SetScore(int newScore);
 	int GetWinScore();
 
-	ASkeeBall* m_pActiveSkeeBalls[MaxBalls];
+	TArray<ASkeeBall*> m_aSkeeBalls;
 	int m_iNextSkeeBall;
 
 	void SpawnBall(FVector location);

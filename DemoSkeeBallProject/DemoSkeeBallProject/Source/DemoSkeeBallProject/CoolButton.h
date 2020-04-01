@@ -15,9 +15,11 @@ UCLASS()
 class DEMOSKEEBALLPROJECT_API ACoolButton : public AWorldButton
 {
 	GENERATED_BODY()
+	
 	ACoolButton();
 	virtual void OnPressed_Implementation(ABaseController* pController) override;
-	
+	void PreInit() override;
+
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* m_pSpawnLocationMesh;
 	
